@@ -1,0 +1,161 @@
+.history .scroll-menu ul {
+  display: flex;
+  justify-content: center;
+}
+.history .scroll-menu ul li {
+  flex-basis: 250px;
+  height: 80px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.history .scroll-menu ul li.on {
+  background-color: #0467b3;
+  color: #fff;
+}
+.history .history-list ul {
+  padding: 50px 0;
+  margin: 50px 0;
+  position: relative;
+}
+.history .history-list ul:before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: #ccc;
+  position: absolute;
+  left: 50%;
+}
+.history .history-list ul li {
+  display: flex;
+  margin: 50px 0;
+}
+.history .history-list ul li:nth-child(odd) {
+  justify-content: flex-end;
+}
+.history .history-list ul li:nth-child(odd) img {
+  left: auto;
+  right: 0;
+}
+.history .history-list ul li:nth-child(even) {
+  text-align: right;
+}
+.history .history-list ul li:nth-child(even) .year-box .year:before {
+  left: auto;
+  right: -55px;
+}
+.history .history-list ul li .year-box {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 50px;
+  color: #999;
+}
+.history .history-list ul li .year-box .year {
+  display: block;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #111;
+  position: relative;
+}
+.history .history-list ul li .year-box .year:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  border: 3px solid #0467b3;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  left: -55px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.history .history-list ul li img {
+  position: absolute;
+  left: 0;
+}
+.history .chairman-list,
+.history .chairman-list02 {
+  min-height: 500px;
+  padding-top: 100px;
+  display: flex;
+}
+.history .chairman-list h4,
+.history .chairman-list02 h4 {
+  font-size: 36px;
+  font-weight: 300;
+  width: 180px;
+  flex-shrink: 0;
+}
+.history .chairman-list h4 strong,
+.history .chairman-list02 h4 strong {
+  font-weight: 700;
+  color: #0467b3;
+}
+.history .chairman-list .list,
+.history .chairman-list02 .list {
+  flex-grow: 1;
+  margin-left: 100px;
+}
+.history .chairman-list .list ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.history .chairman-list .list ul li {
+  box-sizing: border-box;
+  width: calc(25% - 10px);
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 30px 0;
+}
+.history .chairman-list .list ul li .name {
+  color: #0467b3;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.history .chairman-list .list ul li .period:before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  margin: 30px auto;
+  background-color: #ccc;
+}
+.history .chairman-list02 .list {
+  display: table;
+  border-top: 2px solid #111;
+}
+.history .chairman-list02 .list ul {
+  display: table-row-group;
+}
+.history .chairman-list02 .list ul li {
+  display: table-row;
+}
+.history .chairman-list02 .list ul li span {
+  display: table-cell;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  vertical-align: middle;
+  padding: 0 20px;
+  text-align: center;
+}
+.history .chairman-list02 .list ul li span.name {
+  width: 200px;
+}
+.history .chairman-list02 .list ul li span.position {
+  width: 400px;
+}
+.history .chairman-list02 .list ul li span.period {
+  border-right: none;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn">+</button>
+    <script>
+      const pi = 3.14;
+      //const 썼으면 pi를 두번 할당 할 수 없다! 즉, pi =5.12라고 다시 쓸수 없다는 말이다. 다만 let은 여러번 값을 할당 할 수 있다.
+      let age = 30;
+      age = 31;
+
+      console.log(pi);
+      console.log(age);
+
+      if (age > 20) {
+        let msg = "당신의 미성년자가 아닙니다.";
+        console.log(msg); //지역변수. {}를 벗어나면 효력이 없어진다. 또한 {}안의 변수는 밖에서 들여다 볼 수 없다! scope 라고 한다. JS는 block scope!
+      }
+
+      //var 는 예외... var는 안을 들여다 볼 수 있다. 이건 fuction scope라서. 그러나 대부분 block scope를 쓴다! var는 쓰지 말자!
+
+      //block 안에서는 밖을 볼 수 있다!
+
+      for (let i = 0; i < 100; i++) {
+        console.log(i);
+      }
+      // console.log(i); //{}밖이므로 undefined가 뜬다!
+
+      let sum = 0;
+      for (let i = 0; i <= 100; i++) {
+        sum = sum + i;
+      }
+      console.log(sum);
+      const btn = document.querySelector(".btn");
+      let sum02 = 0;
+      btn.addEventListener("click", function () {
+        sum02 = sum02 + 10;
+        console.log(sum02);
+      });
+    </script>
+  </body>
+</html>

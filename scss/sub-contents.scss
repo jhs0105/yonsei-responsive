@@ -1,0 +1,198 @@
+@import "vars";
+@import "mixins";
+
+@import "history.scss";
+@import "greeting.scss";
+
+#sub-visual {
+  height: 550px;
+  background: url("../images/main/bg_main_visual.jpg") no-repeat;
+  background-size: cover;
+  padding-top: 120px;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+  .container {
+    display: flex;
+    position: relative;
+  }
+  .sub-title {
+    font-size: $h1;
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    span {
+      display: block;
+      padding-bottom: 20px;
+      border-bottom: 3px solid $point-color;
+    }
+  }
+  .bg {
+    position: absolute;
+    height: 430px;
+    max-width: 1280px;
+    width: calc(100vw - 400px);
+    left: 400px;
+    bottom: 0;
+    border-radius: 100px 0 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.sub-visual01 {
+  background-image: url("../images/sub-contents/about_visual.jpg");
+}
+.sub-visual05 {
+  background-image: url("../images/sub-contents/community_visual.jpg");
+}
+
+#lnb {
+  background-color: $main-color;
+  color: #fff;
+  .container {
+    display: flex;
+    height: 65px;
+    .home {
+      width: 65px;
+      background: url("../images/sub-contents/icon_home.png") no-repeat 50%;
+      overflow: hidden;
+      text-indent: -50px; //글 들여쓰기 -붙이면 밖으로 빠진다.
+      //ir 이미지가 텍스트를 대체한다 (overflow hidden과 text-indent로.. )
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .lnb-box {
+      width: 300px;
+      font-size: 16px;
+      font-weight: 500;
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      &:nth-last-child(1) {
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      > a {
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+        position: relative;
+        &:after {
+          @include icon("\f055");
+          font-size: 24px;
+        }
+        &:before {
+          @include icon("\f056");
+          font-size: 24px;
+          position: absolute;
+          right: 30px;
+          display: none;
+        }
+        &.on {
+          &:after {
+            display: none;
+          }
+          &:before {
+            display: block;
+          }
+        }
+      }
+      ul {
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        display: none;
+        box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.15);
+        a {
+          height: 65px;
+          display: flex;
+          align-items: center;
+          padding-left: 30px;
+          color: #111;
+          border-top: 1px solid #fff;
+          transition: all 0.25s ease;
+          &:hover {
+            background-color: $main-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+#sub-contents {
+  min-height: 600px;
+  padding: 100px 0;
+}
+.contents-title {
+  font-size: $h2;
+  font-weight: 500;
+  padding: 100px 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.contents-visual {
+  display: flex;
+  margin-top: 100px;
+  margin-right: -20px;
+  > div {
+    flex-basis: 50%;
+    height: 400px;
+    box-sizing: border-box;
+  }
+  .left-contents {
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .txt {
+      position: absolute;
+      color: #fff;
+      left: 50px;
+      bottom: 50px;
+      font-size: $h2;
+      line-height: 1.5;
+      font-weight: 300;
+      strong {
+        font-weight: 700;
+      }
+    }
+  }
+  .right-contents {
+    background: url("../images/sub-contents/history_ban_bg.png") no-repeat right -30px bottom -30px darken($main-color, 15);
+    color: #fff;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
+    margin-top: 20px;
+    position: relative;
+    .txt-box {
+      .txt {
+        font-size: $h3;
+        color: rgba(255, 255, 255, 0.5);
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        strong {
+          font-size: $h2;
+          font-weight: 700;
+          display: block;
+          margin-top: 30px;
+          color: #fff;
+        }
+      }
+      .title {
+        text-transform: uppercase;
+        line-height: 1.5;
+        font-size: $h3;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}

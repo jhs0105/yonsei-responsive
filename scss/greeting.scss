@@ -1,0 +1,73 @@
+@import "vars";
+@import "mixins";
+
+.greeting {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    .img-box {
+      position: relative;
+      border: 1px solid #ccc;
+      img {
+        width: 450px;
+      }
+      &:after {
+        content: "";
+        display: block;
+        background: darken($main-color, 20) url("../images/sub-contents/ysscience.png") left 20px bottom 0 no-repeat;
+        position: absolute;
+        z-index: -1;
+        left: -50px;
+        right: 50px;
+        top: 200px;
+        bottom: -50px;
+      }
+    }
+    .greeting-box {
+      flex-grow: 1; //넓이를 제외한 나머지 여백을 다 가져간다.
+      margin-left: 120px;
+      h4 {
+        font-size: $h2;
+        font-weight: 300;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        //border-bottom: 1px solid #ccc;
+        position: relative;
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 1px;
+          width: 100%;
+          background: linear-gradient(90deg, $main-color 0%, $main-color 50px, rgba(204, 204, 204, 1) 50px, rgba(204, 204, 204, 1) 100%);
+          //border-bottom에 before으로 겹치게 해서 2개의 색을 넣을 수도 있으나, css gradient로 한번에 여러색을 넣을 수 있다!
+        }
+        strong {
+          font-weight: 700;
+          color: $main-color;
+        }
+      }
+      .txt {
+        p {
+          line-height: 1.5;
+          margin-bottom: 30px;
+          word-break: keep-all;
+        }
+      }
+      .sign {
+        text-align: right;
+        font-size: 24px;
+        margin-top: 50px;
+        strong {
+          font-size: 16px;
+          display: block;
+          color: $main-color;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

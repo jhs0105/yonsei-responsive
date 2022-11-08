@@ -1,0 +1,177 @@
+@import "vars";
+@import "mixins";
+
+.history {
+  .scroll-menu {
+    ul {
+      display: flex;
+      justify-content: center;
+      li {
+        flex-basis: 250px;
+        height: 80px;
+        background-color: #ccc;
+        @include flex;
+        margin: 0 5px;
+        font-size: $h4;
+        font-weight: 500;
+        cursor: pointer;
+        &.on {
+          background-color: $main-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .history-list {
+    ul {
+      padding: 50px 0;
+      margin: 50px 0;
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+        position: absolute;
+        left: 50%;
+      }
+      li {
+        display: flex;
+        margin: 50px 0;
+        &:nth-child(odd) {
+          justify-content: flex-end;
+          img {
+            left: auto; //auto처리해야 없어진다
+            right: 0;
+          }
+        }
+        &:nth-child(even) {
+          text-align: right;
+          .year-box .year:before {
+            left: auto;
+            right: -55px;
+          }
+        }
+        .year-box {
+          width: 50%;
+          box-sizing: border-box;
+          padding: 0 50px;
+          color: #999;
+
+          .year {
+            display: block;
+            font-size: $h2;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #111;
+            position: relative;
+            &:before {
+              content: "";
+              display: block;
+              width: 10px;
+              height: 10px;
+              border-radius: 100px;
+              border: 3px solid $main-color;
+              top: 50%;
+              transform: translateY(-50%);
+              position: absolute;
+              left: -55px;
+              box-sizing: border-box;
+              background-color: #fff;
+            }
+          }
+        }
+        img {
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+  .chairman-list,
+  .chairman-list02 {
+    min-height: 500px;
+    padding-top: 100px; //padding은 내꺼다..
+    display: flex;
+    h4 {
+      font-size: $h2;
+      font-weight: 300;
+      width: 180px;
+      flex-shrink: 0; //줄어들때 의미. 0을 주면 안줄어 든다.
+      strong {
+        font-weight: 700;
+        color: $main-color;
+      }
+    }
+    .list {
+      flex-grow: 1; //늘어날때...
+      margin-left: 100px;
+    }
+  }
+  .chairman-list {
+    .list {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          box-sizing: border-box;
+          width: calc(25% - 10px);
+          margin: 5px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          text-align: center;
+          padding: 30px 0;
+          .name {
+            color: $main-color;
+            font-size: $h3;
+            font-weight: 700;
+            margin-bottom: 20px;
+          }
+          .period {
+            &:before {
+              content: "";
+              display: block;
+              width: 30px;
+              height: 1px;
+              margin: 30px auto;
+              background-color: #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+  .chairman-list02 {
+    .list {
+      display: table;
+      border-top: 2px solid #111;
+      ul {
+        display: table-row-group;
+        li {
+          display: table-row; //table row, row-group은 명목상 존재하는 것이라 border top을 그릴 수 없다. 실제적으로 존재하는 것은 table-cell, table이다.
+          &:nth-child(even) {
+            //background-color: #eee;
+          }
+          span {
+            display: table-cell;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            vertical-align: middle;
+            padding: 0 20px;
+            text-align: center;
+            &.name {
+              width: 200px;
+            }
+            &.position {
+              width: 400px;
+            }
+            &.period {
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

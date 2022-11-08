@@ -1,0 +1,382 @@
+@import "vars";
+@import "mixins";
+// @붙이면 가져올수 있다. (import할때는 제목의 언더바를 붙이지 않는다)
+
+body {
+  font-family: "Roboto", "Noto Sans KR", "돋움";
+  color: #111;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+//이미지는 글자처럼 처리된다.
+img {
+  vertical-align: top;
+  //이걸쓰면 이미지 위로 붙여 준다. 안쓰면 이미가 살짝 벌어짐
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.container {
+  width: 1460px;
+  margin: 0 auto;
+}
+
+#header {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  top: 0;
+  transition: all 0.3s ease;
+  height: 120px;
+  &.on,
+  &.full {
+    background-color: white;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+    #logo {
+      #logo-white {
+        display: none;
+      }
+      #logo-color {
+        display: block;
+      }
+    }
+    #gnb .list {
+      .depth01 {
+        color: #333;
+      }
+    }
+  }
+  &.full {
+    height: 400px;
+    overflow: hidden; //400px 밑에 있는 것은 다 사라진다!
+    #gnb .list .depth01 {
+      transition: none;
+    }
+    #gnb .list > li:hover .depth02 {
+      background-color: $main-color;
+      color: #fff;
+    }
+    #gnb .list .depth02 {
+      opacity: 1;
+      pointer-events: auto;
+      background-color: #fff;
+      height: 300px;
+      color: #333;
+      transition: none;
+      border-radius: 0;
+      li {
+        opacity: 1;
+        transition: none;
+      }
+    }
+  }
+
+  .container {
+    width: 1840px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; //자기만의 높이를 가진다.
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+    height: 120px;
+    img {
+      width: 200px;
+    }
+    #logo-color {
+      display: none;
+    }
+  }
+  #gnb {
+    color: #fff;
+    .list {
+      display: flex;
+      > li {
+        position: relative;
+      }
+      .depth01 {
+        //color: #fff;
+        font-size: $h4;
+        font-weight: 500;
+        height: 120px; //inline (a) 은 넓이 높이 못가진다. 그러니 flex처리나 block처리 해야 한다.
+        @include flex;
+        padding: 0 50px;
+        transition: all 0.25s ease;
+        &:before {
+          content: "";
+          display: block;
+          height: 2px;
+          background-color: #ffc240;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          opacity: 0;
+        }
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 30px;
+          right: 30px;
+          height: 2px;
+          background-color: #fff;
+          bottom: 10px;
+          transform: scaleX(0);
+          transition: all 0.25s ease;
+        }
+      }
+      .depth02 {
+        text-align: center;
+        color: #fff;
+        background-color: $main-color;
+        padding: 15px 0 30px;
+        font-size: 14px;
+        border-radius: 0 0 20px 20px;
+        opacity: 0;
+        transition: all 0.25s ease;
+        pointer-events: none;
+        position: absolute; //pointer-event에 positon absolute를 주면 반응을 안한다...
+        width: 100%;
+        z-index: 2;
+        li {
+          opacity: 0.5;
+          transition: all 0.25s ease;
+          &:hover {
+            opacity: 1;
+          }
+          a {
+            display: block; //block처리 해야 padding을 같는다.
+            padding: 15px 0;
+          }
+        }
+      }
+    }
+  }
+  .util {
+    display: flex;
+    align-items: center;
+    height: 120px;
+
+    .language {
+      position: relative;
+      background-color: #ccc;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+      &:hover {
+        color: white;
+        background-color: $main-color;
+        ul {
+          opacity: 1;
+          top: 60px;
+          pointer-events: auto;
+        }
+      }
+      ul {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        background-color: $main-color;
+        left: 0;
+        top: 80px;
+        border-radius: 10px;
+        transition: all 0.25s ease;
+        color: #fff;
+        li a {
+          display: block;
+          padding: 10px;
+          padding: 10px 0;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+      }
+      button {
+        text-transform: uppercase;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+
+        &:before {
+          content: "\e894";
+          font-family: "Material Icons"; //font-family를 지정해줘야 생긴다. 이건 google font
+          font-size: 24px;
+          font-weight: 400;
+          margin-right: 10px;
+        }
+      }
+    }
+    .all-menu {
+      margin-left: 40px;
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1860px) {
+  #header {
+    .container {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 50px; //logo, util이 absolute가 아니니깐 padding으로 여백을 만들어 준다.
+    }
+  }
+}
+
+@media all and (max-width: 1460px) {
+  .container {
+    width: 100%;
+  }
+  #header {
+    .container {
+      padding: 0 20px;
+    }
+    #gnb {
+      .list {
+        .depth01 {
+          font-size: 18px;
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+}
+
+@media all and(min-width:1280px) {
+  #header {
+    #gnb {
+      .list {
+        > li {
+          &:hover {
+            .depth01 {
+              background-color: $main-color;
+              color: #fff;
+              &:after {
+                transform: scaleX(1);
+              }
+              &:before {
+                opacity: 1;
+              }
+            }
+            .depth02 {
+              opacity: 1;
+              pointer-events: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1280px) {
+  #header {
+    #gnb {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff;
+      left: 100%;
+      color: #111;
+      top: 120px;
+      transition: all 0.25s ease;
+      &.on {
+        left: 0;
+      }
+      .list {
+        display: block;
+        .depth01 {
+          justify-content: start;
+          border-top: 1px solid #ccc;
+        }
+        .depth02 {
+          position: static; //디폴트로 다 돌아온다.
+          display: block;
+          border-radius: 0;
+          opacity: 1;
+          padding: 0;
+          display: none;
+          transition: none; //slide와 transition는 같이 쓰지 않는다. 그에 none처리를 해야 한다.
+          li {
+            opacity: 1;
+            a {
+              text-align: left;
+              padding: 20px 0 20px 40px;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+              line-height: 1;
+              display: flex;
+              align-items: center;
+              &:before {
+                content: "";
+                display: block;
+                width: 3px;
+                height: 3px;
+                background-color: #fff;
+                border-radius: 100px;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  #header {
+    height: 60px;
+    .container {
+      padding: 0;
+    }
+    #logo {
+      height: 60px;
+      img {
+        height: 30px;
+      }
+    }
+    #gnb {
+      top: 60px;
+      .list {
+        > li {
+          .depth01 {
+            height: 60px;
+          }
+        }
+      }
+    }
+    .util {
+      height: 60px;
+      margin-right: 10px;
+      .language {
+        padding: 10px;
+        font-size: 12px;
+        button {
+          font-size: 12px;
+          &:before {
+            font-size: 16px;
+          }
+        }
+      }
+      .all-menu {
+        margin-left: 20px;
+      }
+    }
+  }
+}

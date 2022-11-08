@@ -1,0 +1,64 @@
+.greeting .container {
+  display: flex;
+  justify-content: space-between;
+}
+.greeting .container .img-box {
+  position: relative;
+  border: 1px solid #ccc;
+}
+.greeting .container .img-box img {
+  width: 450px;
+}
+.greeting .container .img-box:after {
+  content: "";
+  display: block;
+  background: #022e4f url("../images/sub-contents/ysscience.png") left 20px bottom 0 no-repeat;
+  position: absolute;
+  z-index: -1;
+  left: -50px;
+  right: 50px;
+  top: 200px;
+  bottom: -50px;
+}
+.greeting .container .greeting-box {
+  flex-grow: 1;
+  margin-left: 120px;
+}
+.greeting .container .greeting-box h4 {
+  font-size: 36px;
+  font-weight: 300;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.greeting .container .greeting-box h4:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, #0467b3 0%, #0467b3 50px, rgb(204, 204, 204) 50px, rgb(204, 204, 204) 100%);
+}
+.greeting .container .greeting-box h4 strong {
+  font-weight: 700;
+  color: #0467b3;
+}
+.greeting .container .greeting-box .txt p {
+  line-height: 1.5;
+  margin-bottom: 30px;
+  word-break: keep-all;
+}
+.greeting .container .greeting-box .sign {
+  text-align: right;
+  font-size: 24px;
+  margin-top: 50px;
+}
+.greeting .container .greeting-box .sign strong {
+  font-size: 16px;
+  display: block;
+  color: #0467b3;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
